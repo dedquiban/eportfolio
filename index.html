@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dominic Edquiban</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://kit.fontawesome.com/3b2b045606.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("MnUM9qjpgXZn-80Q");
+    })();
+  </script>
+</head>
+<header></header>
+
+<body>
+  <section id="landing-page">
+    <nav>
+      <div class="nav__link--main-container">
+        <figure>
+          <img id="my-logo" src="assets/my-logo.png" alt="" />
+        </figure>
+        <div class="nav__link--container">
+          <ul class="nav__link--list">
+            <li class="nav__link click">
+              <a href="#landing-page" class="
+                    nav__link--anchor
+                    link__hover-effect link__hover-effect--black
+                  ">About</a>
+            </li>
+
+            <li class="nav__link click">
+              <a href="#projects" class="
+                    nav__link--anchor
+                    link__hover-effect link__hover-effect--black
+                  ">Projects</a>
+            </li>
+
+            <li class="nav__link click">
+              <a href="javascript:togglePrompt();" class="
+                    nav__link--anchor
+                    link__hover-effect link__hover-effect--black
+                  ">Contact</a>
+            </li>
+          </ul>
+
+          <div class="nav__contrast--container" onclick="toggleContrast()">
+            <div class="nav__contrast--switch"></div>
+            <a href="javascript:void(0)"><i class="fa-solid fa-moon"></i></a>
+            <a href="javascript:void(0)"><i class="fa-solid fa-sun"></i></a>
+          </div>
+
+          <button class="menu__btn click" onclick="openMenu()">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="menu__backdrop">
+            <button class="menu__btn btn__menu--close click" onclick="closeMenu()">
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="menu__links">
+              <li class="menu__list click">
+                <a href="#" class="menu__link" onclick="closeMenu()">About</a>
+              </li>
+              <li class="menu__list click">
+                <a href="#projects" class="menu__link" onclick="closeMenu()">Projects</a>
+              </li>
+              <li class="menu__list click">
+                <a href="#" class="menu__link" onclick="closeMenu(), togglePrompt()">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="header__container" id='header-container'>
+        <div id='contacts-overlay'>
+          <div class='contacts-wrapper'>
+            <div class='contacts-overlay-top'>
+              <img id='profile-pic' src='assets/me.png' />
+              <div class='contact-content-wrapper'>
+                <div class='contact-content'>
+                  <i class="fa-solid fa-envelope"></i>
+                  dominicedquiban@gmail.com
+                </div>
+                <div class='contact-content'>
+                  <i class="fa-solid fa-square-phone-flip"></i>
+                  (671) 486-5427
+                </div>
+              </div>
+            </div>
+
+            <div class='contacts-socials'>
+              <div class='contact-social'>
+                <a href='https://github.com/dedquiban' id='social-github'>
+                  <i class="fa-brands fa-github-alt click shadow-animation"></i>
+                </a>
+                <div class="github-shadow"></div>
+              </div>
+
+              <div class='contact-social'>
+                <a href="javascript:togglePrompt();" id='social-email'><i
+                    class="fa-regular fa-paper-plane click shadow-animation"></i></a>
+                <div class="email-shadow"></div>
+              </div>
+
+              <div class='contact-social'>
+                <a href='https://www.linkedin.com/in/dominic-edquiban-2639b619b/' id='social-linkedin'><i
+                    class="fa-brands fa-linkedin-in click shadow-animation"></i></a>
+                <div class="linkedin-shadow"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="header__desc--title-container">
+          <h1 class="header__desc--title">
+            Hi, <span class="text__blue">Dominic</span> here.
+          </h1>
+          <div class="blinking-cursor"></div>
+        </div>
+        <p class="header__desc--para">
+          I'm a
+          <span class="text__blue">Frontend Software Engineer</span> based in the
+          US. My interests range from implementing visually appealing design, to creating user-friendly websites, and
+          everything in between.
+        </p>
+        <div id='contacts' class='contacts'>
+          <button class='button-85'>
+            <div id='button-85-contents'>
+              Let' s connect <i class="fa-solid fa-link"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+
+
+
+      <a href="#projects" class="scroll">
+        <div class="scroll__icon click"></div>
+      </a>
+
+      <div class='prompt-wrapper'>
+        <div class="prompt">
+          <div class="prompt__about">
+            <h3 class="prompt__about--title">Here's a bit about me.</h3>
+            <p class="prompt__about--desc">
+              I'm a
+              <span class="text__blue">Frontend Software Engineer</span> with a
+              strong passion in developing websites with great user experiences.
+              My interest lies within the lines of
+              <span class="text__blue">Design</span> and
+              <span class="text__blue">Full-stack Development</span>, but I am
+              always open to new endeavors.
+            </p>
+            <p class="prompt__about--desc">
+              Here are some technologies I've been working with:
+            </p>
+
+            <div class="prompt__about--icon-wrapper">
+              <div class="tooltip">
+                <img class="icon icon--html" src="assets/html.png" alt="HTML 5" />
+                <span class="tooltiptext">HTML</span>
+              </div>
+
+              <div class="tooltip">
+                <img class="icon icon--css" src="assets/css.png" alt="CSS" />
+                <span class="tooltiptext">CSS</span>
+              </div>
+
+              <div class="tooltip">
+                <img class="icon icon--js tooltip" src="assets/js.png" alt="JavaScript" />
+                <span class="tooltiptext">JavaScript</span>
+              </div>
+
+              <div class="tooltip">
+                <img class="icon icon--react tooltip" src="assets/react.png" alt="React" />
+                <span class="tooltiptext">React</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-x click desktop" onclick="closePrompt()"></i>
+          </div>
+          <div class="prompt__contact">
+            <h3 class="prompt__contact--title">Let's have a chat!</h3>
+            <p class="prompt__contact--subtitle">
+              I'm currently open to new opportunities.
+            </p>
+
+            <div class="prompt__contact--form-main-container">
+              <form class="prompt__contact--form" onsubmit="contact(event)">
+                <div class="prompt__contact--form-container">
+                  <div class="prompt__contact--form-container-1">
+                    <div class="prompt__contact--form-item">
+                      <label class="prompt__contact--form-label">Name</label>
+                      <input class="underline" name="user_name" type="text" id='input_name' />
+                      <p class='error-name' id='error_name'></p>
+                    </div>
+
+                    <div class="prompt__contact--form-item">
+                      <label class="prompt__contact--form-label">Email</label>
+                      <input class="underline" name="user_email" type="email" id='input_email' />
+                      <p class='error-email' id='error_email'></p>
+                    </div>
+                  </div>
+
+                  <div class="prompt__contact--form-container-2">
+                    <div class="prompt__contact--form-item">
+                      <label class="prompt__contact--form-label">Message</label>
+                      <textarea class="underline--message" name="user_message" type="text"
+                        id='input_message'></textarea>
+                      <p class='error-message' id='error_message'></p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <button class="prompt__contact--btn">Send it my way</button>
+              </form>
+
+              <div class="
+                  prompt__contact--overlay prompt__contact--overlay-loading
+                ">
+                <i class="fas fa-spinner"></i>
+              </div>
+              <div class="
+                  prompt__contact--overlay prompt__contact--overlay-success
+                ">
+                Thanks for leaving a message! Looking forward to speaking to you
+                soon.
+              </div>
+              <div class="
+                  prompt__contact--overlay prompt__contact--overlay-failed
+                ">
+                This email service is temporarily unavailable. Please contact me directly at dominicedquiban@gmail.com
+              </div>
+              <p class="mobile" onclick="closePrompt()">Close</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </section>
+
+  <section id="projects">
+    <div class="projects__container">
+      <div class='projects__project--title-wrapper'>
+        <i class="fa-solid fa-code-branch"></i>
+        <h1 class="projects__container--title">Projects</h1>
+      </div>
+      <div class="projects--row">
+        <div class="projects__project--container">
+          <div class="projects__project--link-container">
+            <i class="fa-solid fa-folder-closed"></i>
+            <a href="https://github.com/dedquiban/tmdb-app"><i class="fa-brands fa-github click"></i></a>
+          </div>
+          <h2 class="projects__project--title"> Movie Mockup</h2>
+          <div class='projects__project--desc-container'>
+            <p class="projects__project--desc-2">
+              The app allows users to view detailed information about each film, including its synopsis, release date,
+              and ratings. The app allows users to browse a selection of movies, and create playlists of their
+              favorite
+              films.
+            </p>
+            <div class='projects__project--desc'>
+              <div>
+                <p>Technologies I used:</p>
+              </div>
+
+              <div class='projects__project--desc-inner-wrapper'>
+                <div class='projects__project--desc-inner'>
+                  <p><br /> <span>·</span> HTML <br /> <span>·</span> CSS <br />
+                    <span>·</span> JavaScript
+                  </p>
+                </div>
+
+                <div class='projects__project--desc-inner-2'>
+                  <p> <br /> <span>·</span> React <br /> <span>·</span> Redux <br /><span>·</span> Firebase</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="footer__link">
+      <div class="copyright">Copyright © Made by Dominic Edquiban</div>
+      <div class='network-wrapper' id='network-wrapper'>
+        <div class='networkStatus' id='networkStatus'>
+          <h1> It seems that you're offline</h1>
+        </div>
+
+      </div>
+      <div></div>
+  </section>
+
+</body>
+
+</html>
