@@ -7,6 +7,7 @@ function contact(e) {
   const loading = document.querySelector('.prompt__contact--overlay-loading');
   const success = document.querySelector('.prompt__contact--overlay-success');
   const failed = document.querySelector('.prompt__contact--overlay-failed');
+  const promptContact = document.querySelector('.prompt__contact');
 
   var email = document.getElementById('input_email');
   var name = document.getElementById('input_name');
@@ -35,7 +36,10 @@ function contact(e) {
   }
 
   if (name.value && email.value && message.value) {
-    loading.classList += ' prompt__contact--overlay-visible';
+    loading.style.display = 'flex';
+    loading.style.zIndex = 1;
+    const parentParent = loading.parentNode.parentNode;
+    loading.style.height = `${parentParent.scrollHeight}px`;
     emailjs
       .sendForm(
         'service_dzvlsmp',
@@ -45,13 +49,25 @@ function contact(e) {
       )
       .catch((error) => {
         console.log(error);
-        loading.classList.remove('prompt__contact--overlay-visible');
-        failed.classList += ' prompt__contact--overlay-visible';
+
+        setTimeout(function () {
+          loading.style.display = 'none';
+          loading.style.zIndex = -1;
+          failed.style.display = 'flex';
+          failed.style.zIndex = 1;
+          console.log('it worked');
+        }, 2000);
       });
 
     setTimeout(function () {
-      loading.classList.remove('prompt__contact--overlay-visible');
-      success.classList += ' prompt__contact--overlay-visible';
+      loading.style.display = 'none';
+      loading.style.zIndex = -1;
+      success.style.display = 'flex';
+      success.style.zIndex = 1;
+      const successParent = loading.parentNode.parentNode;
+      success.style.height = `${successParent.scrollHeight}px`;
+      // promptContact.style.overflow = 'hidden';
+
       console.log('it worked');
     }, 5000);
   }
@@ -68,10 +84,17 @@ function closePrompt() {
   const loading = document.querySelector('.prompt__contact--overlay-loading');
   const success = document.querySelector('.prompt__contact--overlay-success');
   const failed = document.querySelector('.prompt__contact--overlay-failed');
+  const promptContact = document.querySelector('.prompt__contact');
 
-  loading.classList += ' prompt__contact--overlay-invisible';
-  success.classList += ' prompt__contact--overlay-invisible';
-  failed.classList += ' prompt__contact--overlay-invisible';
+  loading.style.display = 'none';
+
+  success.style.display = 'none';
+  success.style.zIndex = -1;
+
+  failed.style.display = 'none';
+  failed.style.zIndex = -1;
+
+  // promptContact.style.overflow = 'scroll';
 
   var email = document.getElementById('input_email');
   var name = document.getElementById('input_name');
@@ -139,17 +162,51 @@ let timeoutId;
 let timeoutId2;
 function updateContacts() {
   document.addEventListener('DOMContentLoaded', () => {
-    let contacts = document.getElementById('header-container');
     let initialContent =
       document.getElementById('button-85-contents').outerHTML;
+
+    let contacts = document.getElementById('header-container');
+    let nav = document.querySelector('.nav__link--main-container');
+
     let button = document.querySelector('.button-85');
     let wrapper = document.querySelector('.contacts-wrapper');
+    let descTitle = document.querySelector('.header__desc--title-container');
+    let descPara = document.querySelector('.header__desc--para');
+
+    function toggleZindex() {
+      var viewportHeight = window.innerHeight;
+
+      if (viewportHeight <= 430 && contacts.classList.contains('show')) {
+        nav.style.zIndex = 0;
+        document.body.style.overflow = 'hidden';
+        descTitle.style.visibility = 'hidden';
+        descPara.style.visibility = 'hidden';
+      } else {
+        nav.style.zIndex = 1;
+        document.body.style.overflow = 'scroll';
+        descTitle.style.visibility = 'visible';
+        descPara.style.visibility = 'visible';
+      }
+    }
+    window.addEventListener('resize', toggleZindex);
 
     function toggleContacts() {
+      var viewportHeight = window.innerHeight;
+
       if (!contacts.classList.contains('show')) {
         contacts.classList.add('show');
+        if (viewportHeight <= 430) {
+          nav.style.zIndex = 0;
+          document.body.style.overflow = 'hidden';
+          descTitle.style.visibility = 'hidden';
+          descPara.style.visibility = 'hidden';
+        }
       } else {
         contacts.classList.remove('show');
+        nav.style.zIndex = 1;
+        document.body.style.overflow = 'scroll';
+        descTitle.style.visibility = 'visible';
+        descPara.style.visibility = 'visible';
       }
     }
 
@@ -213,3 +270,14 @@ function updateContacts() {
 }
 
 updateContacts();
+
+function toggleMenuBackdropResize() {
+  var menuBackdrop = document.querySelector('.menu__backdrop');
+  var windowWidth = window.innerWidth;
+
+  if (windowWidth > 480) {
+    menuBackdrop.classList.remove('.menu--open');
+  }
+}
+
+window.addEventListener('resize', toggleMenuBackdropResize);

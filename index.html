@@ -17,7 +17,7 @@
     })();
   </script>
 </head>
-<header></header>
+
 
 <body>
   <section id="landing-page">
@@ -80,7 +80,7 @@
       </div>
     </nav>
 
-    <header>
+    <header id='header'>
       <div class="header__container" id='header-container'>
         <div id='contacts-overlay'>
           <div class='contacts-wrapper'>
@@ -148,101 +148,99 @@
         <div class="scroll__icon click"></div>
       </a>
 
-      <div class='prompt-wrapper'>
-        <div class="prompt">
-          <div class="prompt__about">
-            <h3 class="prompt__about--title">Here's a bit about me.</h3>
-            <p class="prompt__about--desc">
-              I'm a
-              <span class="text__blue">Frontend Software Engineer</span> with a
-              strong passion in developing websites with great user experiences.
-              My interest lies within the lines of
-              <span class="text__blue">Design</span> and
-              <span class="text__blue">Full-stack Development</span>, but I am
-              always open to new endeavors.
-            </p>
-            <p class="prompt__about--desc">
-              Here are some technologies I've been working with:
-            </p>
+      <div class="prompt">
+        <div class="prompt__about">
+          <h3 class="prompt__about--title">Here's a bit about me.</h3>
+          <p class="prompt__about--desc">
+            I'm a
+            <span class="text__blue">Frontend Software Engineer</span> with a
+            strong passion in developing websites with great user experiences.
+            My interest lies within the lines of
+            <span class="text__blue">Design</span> and
+            <span class="text__blue">Full-stack Development</span>, but I am
+            always open to new endeavors.
+          </p>
+          <p class="prompt__about--desc">
+            Here are some technologies I've been working with:
+          </p>
 
-            <div class="prompt__about--icon-wrapper">
-              <div class="tooltip">
-                <img class="icon icon--html" src="assets/html.png" alt="HTML 5" />
-                <span class="tooltiptext">HTML</span>
-              </div>
-
-              <div class="tooltip">
-                <img class="icon icon--css" src="assets/css.png" alt="CSS" />
-                <span class="tooltiptext">CSS</span>
-              </div>
-
-              <div class="tooltip">
-                <img class="icon icon--js tooltip" src="assets/js.png" alt="JavaScript" />
-                <span class="tooltiptext">JavaScript</span>
-              </div>
-
-              <div class="tooltip">
-                <img class="icon icon--react tooltip" src="assets/react.png" alt="React" />
-                <span class="tooltiptext">React</span>
-              </div>
+          <div class="prompt__about--icon-wrapper">
+            <div class="tooltip">
+              <img class="icon icon--html" src="assets/html.png" alt="HTML 5" />
+              <span class="tooltiptext">HTML</span>
             </div>
-            <i class="fa-solid fa-x click desktop" onclick="closePrompt()"></i>
+
+            <div class="tooltip">
+              <img class="icon icon--css" src="assets/css.png" alt="CSS" />
+              <span class="tooltiptext">CSS</span>
+            </div>
+
+            <div class="tooltip">
+              <img class="icon icon--js tooltip" src="assets/js.png" alt="JavaScript" />
+              <span class="tooltiptext">JavaScript</span>
+            </div>
+
+            <div class="tooltip">
+              <img class="icon icon--react tooltip" src="assets/react.png" alt="React" />
+              <span class="tooltiptext">React</span>
+            </div>
           </div>
-          <div class="prompt__contact">
-            <h3 class="prompt__contact--title">Let's have a chat!</h3>
-            <p class="prompt__contact--subtitle">
-              I'm currently open to new opportunities.
-            </p>
+          <i class="fa-solid fa-x click desktop" onclick="closePrompt()"></i>
 
-            <div class="prompt__contact--form-main-container">
-              <form class="prompt__contact--form" onsubmit="contact(event)">
-                <div class="prompt__contact--form-container">
-                  <div class="prompt__contact--form-container-1">
-                    <div class="prompt__contact--form-item">
-                      <label class="prompt__contact--form-label">Name</label>
-                      <input class="underline" name="user_name" type="text" id='input_name' />
-                      <p class='error-name' id='error_name'></p>
-                    </div>
+        </div>
+        <div class="prompt__contact">
+          <h3 class="prompt__contact--title">Let's have a chat!</h3>
+          <p class="prompt__contact--subtitle">
+            I'm currently open to new opportunities.
+          </p>
 
-                    <div class="prompt__contact--form-item">
-                      <label class="prompt__contact--form-label">Email</label>
-                      <input class="underline" name="user_email" type="email" id='input_email' />
-                      <p class='error-email' id='error_email'></p>
-                    </div>
+          <div class="prompt__contact--form-main-container">
+            <form class="prompt__contact--form" onsubmit="contact(event)">
+              <div class="prompt__contact--form-container">
+                <div class="prompt__contact--form-container-1">
+                  <div class="prompt__contact--form-item">
+                    <label class="prompt__contact--form-label">Name</label>
+                    <input class="underline" name="user_name" type="text" id='input_name' />
+                    <p class='error-name' id='error_name'></p>
                   </div>
 
-                  <div class="prompt__contact--form-container-2">
-                    <div class="prompt__contact--form-item">
-                      <label class="prompt__contact--form-label">Message</label>
-                      <textarea class="underline--message" name="user_message" type="text"
-                        id='input_message'></textarea>
-                      <p class='error-message' id='error_message'></p>
-                    </div>
+                  <div class="prompt__contact--form-item">
+                    <label class="prompt__contact--form-label">Email</label>
+                    <input class="underline" name="user_email" type="email" id='input_email' />
+                    <p class='error-email' id='error_email'></p>
                   </div>
-
                 </div>
 
-                <button class="prompt__contact--btn">Send it my way</button>
-              </form>
+                <div class="prompt__contact--form-container-2">
+                  <div class="prompt__contact--form-item">
+                    <label class="prompt__contact--form-label">Message</label>
+                    <textarea class="underline--message" name="user_message" type="text" id='input_message'></textarea>
+                    <p class='error-message' id='error_message'></p>
+                  </div>
+                </div>
 
-              <div class="
+              </div>
+
+              <button class="prompt__contact--btn">Send it my way</button>
+            </form>
+
+            <div class="
                   prompt__contact--overlay prompt__contact--overlay-loading
                 ">
-                <i class="fas fa-spinner"></i>
-              </div>
-              <div class="
+              <i class="fas fa-spinner"></i>
+            </div>
+            <div class="
                   prompt__contact--overlay prompt__contact--overlay-success
                 ">
-                Thanks for leaving a message! Looking forward to speaking to you
-                soon.
-              </div>
-              <div class="
+              Thanks for leaving a message! Looking forward to speaking to you
+              soon.
+            </div>
+            <div class="
                   prompt__contact--overlay prompt__contact--overlay-failed
                 ">
-                This email service is temporarily unavailable. Please contact me directly at dominicedquiban@gmail.com
-              </div>
-              <p class="mobile" onclick="closePrompt()">Close</p>
+              This email service is temporarily unavailable. Please contact me directly at dominicedquiban@gmail.com
             </div>
+            <p class="mobile" onclick="closePrompt()">Close</p>
           </div>
         </div>
       </div>
