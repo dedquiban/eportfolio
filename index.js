@@ -4,6 +4,8 @@ let contrastToggle = false;
 async function contact(e) {
   e.preventDefault();
 
+  const promptContact = document.querySelector('.prompt__contact');
+
   const loading = document.querySelector('.prompt__contact--overlay-loading');
   const success = document.querySelector('.prompt__contact--overlay-success');
   const failed = document.querySelector('.prompt__contact--overlay-failed');
@@ -37,8 +39,8 @@ async function contact(e) {
   if (name.value && email.value && message.value) {
     loading.style.display = 'flex';
     loading.style.zIndex = 1;
-    const parentParent = loading.parentNode.parentNode;
-    loading.style.height = `${parentParent.scrollHeight}px`;
+    // const parentParent = loading.parentNode.parentNode;
+    loading.style.height = `${promptContact.clientHeight}px`;
     try {
       await emailjs.sendForm(
         'service_dzvlsmp',
@@ -52,8 +54,8 @@ async function contact(e) {
 
         success.style.display = 'flex';
         success.style.zIndex = 1;
-        const successParent = success.parentNode.parentNode;
-        success.style.height = `${successParent.scrollHeight}px`;
+        // const successParent = success.parentNode.parentNode;
+        success.style.height = `${promptContact.clientHeight}px`;
 
         console.log('it worked');
       }, 5000);
@@ -66,14 +68,23 @@ async function contact(e) {
 
         failed.style.display = 'flex';
         failed.style.zIndex = 1;
-        const failedParent = failed.parentNode.parentNode;
-        failed.style.height = `${failedParent.scrollHeight}px`;
+        // const failedParent = failed.parentNode.parentNode;
+        failed.style.height = `${promptContact.clientHeight}px`;
 
         console.log('it failed');
       }, 2000);
     }
   }
 }
+
+function handlePromptContactOnResize() {
+  const promptContact = document.querySelector('.prompt__contact');
+
+  failed.style.height = `${promptContact.clientHeight}px`;
+  success.style.height = `${promptContact.clientHeight}px`;
+  loading.style.height = `${promptContact.clientHeight}px`;
+}
+window.addEventListener('resize', handlePromptContactOnResize);
 
 function togglePrompt() {
   isPromptOpen = true;
@@ -86,7 +97,6 @@ function closePrompt() {
   const loading = document.querySelector('.prompt__contact--overlay-loading');
   const success = document.querySelector('.prompt__contact--overlay-success');
   const failed = document.querySelector('.prompt__contact--overlay-failed');
-  const promptContact = document.querySelector('.prompt__contact');
 
   loading.style.display = 'none';
 
@@ -95,8 +105,6 @@ function closePrompt() {
 
   failed.style.display = 'none';
   failed.style.zIndex = -1;
-
-  // promptContact.style.overflow = 'scroll';
 
   var email = document.getElementById('input_email');
   var name = document.getElementById('input_name');
