@@ -1,13 +1,12 @@
 let isPromptOpen = false;
 let contrastToggle = false;
 
-function contact(e) {
+async function contact(e) {
   e.preventDefault();
 
   const loading = document.querySelector('.prompt__contact--overlay-loading');
   const success = document.querySelector('.prompt__contact--overlay-success');
   const failed = document.querySelector('.prompt__contact--overlay-failed');
-  const promptContact = document.querySelector('.prompt__contact');
 
   var email = document.getElementById('input_email');
   var name = document.getElementById('input_name');
@@ -40,36 +39,39 @@ function contact(e) {
     loading.style.zIndex = 1;
     const parentParent = loading.parentNode.parentNode;
     loading.style.height = `${parentParent.scrollHeight}px`;
-    emailjs
-      .sendForm(
+    try {
+      await emailjs.sendForm(
         'service_dzvlsmp',
         'template_i5fh409',
         e.target,
         'jMnUM9qjpgXZn-80Q'
-      )
-      .catch((error) => {
-        console.log(error);
+      );
+      setTimeout(function () {
+        loading.style.display = 'none';
+        loading.style.zIndex = -1;
 
-        setTimeout(function () {
-          loading.style.display = 'none';
-          loading.style.zIndex = -1;
-          failed.style.display = 'flex';
-          failed.style.zIndex = 1;
-          console.log('it worked');
-        }, 2000);
-      });
+        success.style.display = 'flex';
+        success.style.zIndex = 1;
+        const successParent = success.parentNode.parentNode;
+        success.style.height = `${successParent.scrollHeight}px`;
 
-    setTimeout(function () {
-      loading.style.display = 'none';
-      loading.style.zIndex = -1;
-      success.style.display = 'flex';
-      success.style.zIndex = 1;
-      const successParent = loading.parentNode.parentNode;
-      success.style.height = `${successParent.scrollHeight}px`;
-      // promptContact.style.overflow = 'hidden';
+        console.log('it worked');
+      }, 5000);
+    } catch (error) {
+      console.log(error);
 
-      console.log('it worked');
-    }, 5000);
+      setTimeout(function () {
+        loading.style.display = 'none';
+        loading.style.zIndex = -1;
+
+        failed.style.display = 'flex';
+        failed.style.zIndex = 1;
+        const failedParent = failed.parentNode.parentNode;
+        failed.style.height = `${failedParent.scrollHeight}px`;
+
+        console.log('it failed');
+      }, 2000);
+    }
   }
 }
 
@@ -135,19 +137,23 @@ function handleNetworkListener() {
     window.addEventListener('offline', (event) => {
       const networkWrapper = document.getElementById('network-wrapper');
       networkWrapper.style.display = 'block';
-      // networkWrapper.style.backgroundColor = 'red';
 
-      const statusDisplay = document.getElementById('networkStatus');
+      const statusDisplay = document.querySelector('.network-status');
       statusDisplay.innerHTML = 'Offline';
+
+      const offlineBubble = document.querySelector('.bubble');
+      offlineBubble.style.boxShadow = '0px 0px 134px 96px #ac2828';
     });
 
     window.addEventListener('online', (event) => {
       const networkWrapper = document.getElementById('network-wrapper');
-      // networkWrapper.style.backgroundColor = 'green';
       networkWrapper.style.display = 'block';
 
-      const statusDisplay = document.getElementById('networkStatus');
+      const statusDisplay = document.querySelector('.network-status');
       statusDisplay.innerHTML = 'Online';
+
+      const onlineBubble = document.querySelector('.bubble');
+      onlineBubble.style.boxShadow = '0px 0px 134px 96px #2e882e';
 
       setTimeout(function () {
         networkWrapper.style.display = 'none';
