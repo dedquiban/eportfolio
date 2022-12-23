@@ -79,6 +79,9 @@ async function contact(e) {
 
 function handlePromptContactOnResize() {
   const promptContact = document.querySelector('.prompt__contact');
+  const loading = document.querySelector('.prompt__contact--overlay-loading');
+  const success = document.querySelector('.prompt__contact--overlay-success');
+  const failed = document.querySelector('.prompt__contact--overlay-failed');
 
   failed.style.height = `${promptContact.clientHeight}px`;
   success.style.height = `${promptContact.clientHeight}px`;
